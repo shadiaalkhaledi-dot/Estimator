@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Workplan Estimator — Three Ways to Deploy</title>
+<title>Workplan Estimator</title>
 <style>
   :root{
     --amber:#f59e0b; --amber-d:#b45309; --amber-l:#fff8ec; --amber-ll:#fffdf8;
@@ -12,123 +12,79 @@
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
-  .hero{padding:64px 22px 42px;max-width:1000px;margin:0 auto}
+  .wrap{max-width:820px;margin:0 auto;padding:0 22px}
+  .hero{padding:70px 22px 30px;max-width:820px;margin:0 auto}
   .kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;color:var(--amber-d);text-transform:uppercase;letter-spacing:1px;background:var(--amber-l);border:1px solid #f3d9a4;padding:5px 13px;border-radius:20px}
   .dot{width:9px;height:9px;border-radius:50%;background:var(--amber)}
-  h1{font-size:42px;line-height:1.1;margin:20px 0 12px;letter-spacing:-1px;font-weight:800}
+  h1{font-size:40px;line-height:1.1;margin:20px 0 14px;letter-spacing:-1px;font-weight:800}
   h1 span{color:var(--amber-d)}
-  .lede{font-size:18px;color:#57534e;max-width:680px;margin:0}
-  .hero .meta{margin-top:20px;font-size:13px;color:var(--muted)}
-  section{padding:20px 0}
-  h2.sec{font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--amber-d);font-weight:800;margin:34px 0 6px}
-  .sec-lede{color:var(--muted);font-size:14.5px;margin:0 0 20px;max-width:720px}
-  .ladder{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 8px}
-  .rung{flex:1;min-width:220px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px}
-  .rung .n{font-family:var(--mono);font-size:12px;color:var(--amber-d);font-weight:700}
-  .rung h4{margin:5px 0 4px;font-size:15px}
-  .rung p{margin:0;font-size:12.5px;color:var(--muted)}
-  .cards{display:grid;grid-template-columns:1fr;gap:18px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 1px 2px rgba(0,0,0,.03),0 10px 30px -22px rgba(0,0,0,.2);position:relative;overflow:hidden}
-  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--amber)}
-  .card.m1::before{background:var(--indigo)} .card.m3::before{background:var(--good)}
-  .card .tagrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
-  .mtag{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--amber-d)}
-  .m1 .mtag{color:var(--indigo)} .m3 .mtag{color:var(--good)}
-  .pill{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--amber-l);color:var(--amber-d);border:1px solid #f3d9a4}
-  .m1 .pill{background:#eef0ff;color:var(--indigo);border-color:#d6d8ff}
-  .m3 .pill{background:#f0fdf4;color:var(--good);border-color:#bbf7d0}
-  .card h3{font-size:23px;margin:2px 0 8px;letter-spacing:-.4px}
-  .card .desc{font-size:15px;color:#44403c;margin:0 0 16px}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:16px 0}
-  .grid2 h5{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:0 0 7px;font-weight:700}
-  .grid2 ul{margin:0;padding-left:18px;font-size:13.5px;color:#44403c}
-  .grid2 li{margin:4px 0}
-  .how{background:var(--amber-ll);border:1px solid var(--line);border-radius:12px;padding:15px 18px;font-size:13.5px}
-  .m1 .how{background:#f6f7ff;border-color:#dfe1ff}
-  .how b{color:var(--amber-d)} .m1 .how b{color:var(--indigo)}
-  .how code{background:#fff;border:1px solid var(--line);border-radius:6px;padding:2px 7px;font-family:var(--mono);font-size:12.5px;color:var(--ink)}
-  .btn{display:inline-block;margin-top:16px;border:none;border-radius:11px;padding:13px 24px;font-size:14.5px;font-weight:700;cursor:pointer;text-decoration:none;font-family:inherit}
-  .btn.amber{background:var(--amber);color:#3a2400;box-shadow:0 2px 0 var(--amber-d)} .btn.amber:hover{background:#f0a613}
-  .btn.green{background:var(--good);color:#fff;box-shadow:0 2px 0 #14532d}
-  .btn.ghost{background:none;color:var(--indigo);border:1.5px solid #d6d8ff}
+  .lede{font-size:18px;color:#57534e;margin:0 0 26px}
+  .btn{display:inline-block;border:none;border-radius:12px;padding:15px 28px;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;font-family:inherit;background:var(--amber);color:#3a2400;box-shadow:0 2px 0 var(--amber-d)}
+  .btn:hover{background:#f0a613}
+  .meta{margin-top:14px;font-size:13px;color:var(--muted)}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--amber-d);font-weight:800;margin:40px 0 10px}
+  p.body{font-size:15px;color:#44403c;margin:0 0 14px}
+  .flow{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0;font-size:12.5px;font-weight:700}
+  .node{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:8px 12px}
+  .node.hl{background:var(--amber-l);border-color:#f3d9a4;color:var(--amber-d)}
+  .arrow{color:var(--muted);align-self:center}
+  .toggle-card{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .mode{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .mode.on{border-color:#d6d8ff;background:#f9f9ff}
+  .mode.off{border-color:#bbf7d0;background:#f4fdf7}
+  .mode h3{margin:0 0 6px;font-size:17px}
+  .mode.on h3{color:var(--indigo)} .mode.off h3{color:var(--good)}
+  .mode p{margin:0;font-size:13.5px;color:#44403c}
+  .mode .tag{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .mode.on .tag{color:var(--indigo)} .mode.off .tag{color:var(--good)}
+  .claude{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:10px;border-left:5px solid var(--indigo)}
+  .claude .tag{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--indigo)}
+  .claude h3{margin:5px 0 8px;font-size:19px}
+  .claude p{margin:0 0 10px;font-size:14px;color:#44403c}
+  .claude code{background:var(--amber-ll);border:1px solid var(--line);border-radius:6px;padding:2px 7px;font-family:var(--mono);font-size:12.5px}
   table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:8px}
   th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line)}
   th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);background:var(--amber-ll)}
-  td:first-child{font-weight:700}
-  .engine{background:#1c1917;color:#e7e5e4;border-radius:16px;padding:26px 28px;margin-top:14px}
-  .engine h3{color:var(--amber);margin:0 0 8px;font-size:18px}
-  .engine p{margin:0;font-size:14px;color:#d6d3d1}
-  .engine .flow{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;font-size:12.5px;font-weight:700}
-  .engine .node{background:#33302c;border:1px solid #57534e;border-radius:9px;padding:8px 12px}
-  .engine .node.hl{background:#3a2a10;border-color:var(--amber-d);color:var(--amber)}
-  .engine .arrow{color:#78716c;align-self:center}
-  footer{padding:40px 22px 70px;color:var(--muted);font-size:12.5px;max-width:1000px;margin:0 auto;border-top:1px dashed var(--line)}
-  .note{font-size:12.5px;color:var(--muted);margin-top:10px}
-  @media(max-width:640px){h1{font-size:32px}.grid2{grid-template-columns:1fr}}
+  td:first-child{font-weight:700;color:var(--muted)}
+  footer{padding:44px 22px 70px;color:var(--muted);font-size:12.5px;max-width:820px;margin:34px auto 0;border-top:1px dashed var(--line)}
+  @media(max-width:640px){h1{font-size:31px}.toggle-card{grid-template-columns:1fr}table{font-size:12px}}
 </style>
 </head>
 <body>
 <div class="hero">
   <span class="kicker"><span class="dot"></span> DIALOG · Workplan Estimation Tool</span>
-  <h1>One estimator.<br><span>Three ways to put it in front of the firm.</span></h1>
-  <p class="lede">A PM describes a new project — typology, size, complexity, disciplines — and the tool blends comparable past projects into a draft workplan: hours by phase, discipline and role, an indicative fee, and a peak-team recommendation. Every number traces back to named comparables. The question isn't <em>whether</em> it works — it's <em>how we deploy it.</em></p>
-  <p class="meta">Prepared for the Head of Digital Technology · demonstration build · synthetic comparable data</p>
+  <h1>Draft a workplan from<br><span>your past projects.</span></h1>
+  <p class="lede">A PM describes a new project — typology, size, complexity, disciplines — and the tool blends comparable past projects into a draft workplan: hours by phase, discipline and role, an indicative fee, an editable role&nbsp;&times;&nbsp;phase breakdown, and a resourcing plan. Every number traces back to named comparables.</p>
+  <a class="btn" href="method2_webapp.html" target="_blank" rel="noopener">Open the estimator ›</a>
+  <p class="meta">Demonstration build · synthetic comparable data · indicative rate schedule</p>
 </div>
 
 <div class="wrap">
-  <h2 class="sec">The through-line</h2>
-  <p class="sec-lede">These aren't three competing products — they're one shared engine wrapped three ways, and a natural rollout sequence. Same scoring math, same reference data, same audit trail underneath all three.</p>
-  <div class="ladder">
-    <div class="rung"><div class="n">PILOT — now</div><h4>Method 1 · Claude</h4><p>Already works. Where judgment and improvisation live. Zero new build.</p></div>
-    <div class="rung"><div class="n">TRUST — build</div><h4>Method 3 · Standalone</h4><p>The deterministic core Finance/QA can audit line by line. No AI, runs offline.</p></div>
-    <div class="rung"><div class="n">SCALE — destination</div><h4>Method 2 · Web app</h4><p>The firm-wide product: guided UX, AI optional, one place to host and govern.</p></div>
+  <h2>Start here — run it inside Claude</h2>
+  <p class="body">The same engine already runs today as a Claude (Cowork) skill — the pilot that needs zero new build, where judgment and improvisation live.</p>
+  <div class="claude">
+    <div class="tag">Method 1 · Claude directly</div>
+    <h3>Claude does the interview</h3>
+    <p>A PM opens a Claude chat and talks to the tool. Claude runs the <code>workplan-estimate</code> skill: it interviews the PM, pulls comparable projects, runs the real Python scoring scripts, and narrates the draft — adjusting live as the PM pushes back ("drop that comparable", "add a discipline"). Best for messy free-form input, live judgment calls, and audience-driven demos.</p>
+    <p style="margin:0;color:var(--muted);font-size:13px"><b>How to demo it:</b> open a Cowork chat with the <code>workplanningtool</code> folder connected, then say <code>Run the workplan demo</code>. Claude walks the PM exchange and shows genuinely computed results — the same scripts that power the web app.</p>
   </div>
 
-  <h2 class="sec">The three methods</h2>
-  <div class="cards">
-
-    <!-- METHOD 1 -->
-    <div class="card m1">
-      <div class="tagrow"><span class="mtag">METHOD 1</span><span class="pill">Claude skill</span><span class="pill">interview + improv</span></div>
-      <h3>Claude does the interview</h3>
-      <p class="desc">A PM opens a Claude (Cowork) chat and talks to the tool. Claude runs the <code>workplan-estimate</code> skill: it interviews the PM, pulls comparable projects, runs the real Python scoring scripts, and narrates the draft — adjusting live as the PM pushes back ("drop that comparable", "add a discipline").</p>
-      <div class="grid2">
-        <div><h5>What it's best at</h5><ul><li>Messy, free-form input — no forms</li><li>Judgment calls &amp; live iteration</li><li>Audience-driven "improv" demos</li><li>Explaining <em>why</em>, in plain language</li></ul></div>
-        <div><h5>Trade-offs</h5><ul><li>Needs Claude/Cowork seats + skill set up</li><li>Conversation varies (numbers don't)</li><li>Consistency across users is looser</li></ul></div>
-      </div>
-      <div class="how"><b>Is it a skill?</b> Yes — Method 1 is a Claude <b>skill</b> (<code>workplan-estimate</code>): the structured Q&amp;A workflow plus the Python scripts, living in the connected <code>workplanningtool</code> folder. <br><br><b>How to demo it:</b> open a Cowork chat with that folder connected, then say <code>Run the workplan demo</code> (or "Run improv" to let the room drive). Claude walks the PM exchange from <code>DEMO_RUNBOOK.md</code> and shows genuinely computed results in the chat. Nothing is faked — the same scripts power all three methods.</div>
+  <h2>Then — the web app, one switch</h2>
+  <p class="body">To take it firm-wide, the same engine ships as a single self-serve web app. A switch in the header turns the AI layer on or off — same numbers underneath, two ways to present it.</p>
+  <div class="toggle-card">
+    <div class="mode on">
+      <div class="tag">AI · on · Method 2</div>
+      <h3>Claude reads &amp; steers</h3>
+      <p>Paste a client brief and the AI pre-fills the intake, then adapt the workplan in plain language — "make Structural the prime", "add a LEED target". Fast and flexible for messy, real-world inputs.</p>
     </div>
-
-    <!-- METHOD 2 -->
-    <div class="card m2">
-      <div class="tagrow"><span class="mtag">METHOD 2</span><span class="pill">Guided web app</span><span class="pill">AI / API-connectable</span></div>
-      <h3>The self-serve web app</h3>
-      <p class="desc">Method 1's interview, as a web page any PM can use with zero training. Paste the client scope and let the AI layer pre-fill it, or answer one question at a time. Then a full, editable breakdown — hours by phase, discipline and role, with a live-adjustable fee and a RAIC cross-check.</p>
-      <div class="grid2">
-        <div><h5>What it's best at</h5><ul><li>Firm-wide use without Claude seats</li><li>Consistent, guided intake</li><li>Editable per-discipline workplans</li><li>The AI layer is optional &amp; swappable</li></ul></div>
-        <div><h5>Trade-offs</h5><ul><li>Most to build &amp; host for real</li><li>Someone owns the deployment</li></ul></div>
-      </div>
-      <div class="how"><b>How to demo it:</b> open the tool and paste a client brief into the AI box, or click through the five questions. Try the per-discipline tabs — every hours cell is editable and the fee re-totals live.
-      <a class="btn amber" href="method2_webapp.html" target="_blank" rel="noopener">Open Method 2 — Guided web app ›</a></div>
+    <div class="mode off">
+      <div class="tag">AI · off · Method 3</div>
+      <h3>Deterministic &amp; auditable</h3>
+      <p>No AI, no network. Set inputs by hand and see the receipts: confidence drivers, every candidate scored, and the firm's Python embedded verbatim. The version Finance and QA can trust line by line.</p>
     </div>
-
-    <!-- METHOD 3 -->
-    <div class="card m3">
-      <div class="tagrow"><span class="mtag">METHOD 3</span><span class="pill">Standalone HTML</span><span class="pill">no AI · offline</span></div>
-      <h3>The deterministic engine, in one file</h3>
-      <p class="desc">A single HTML file with the engine and data wired in — no AI, no server, no network. It shows <em>everything</em>: every candidate's component scores, the full breakdown, and the actual Python source embedded. It "learns" by accumulating evidence: curate projects in Claude, export JSON, drop them in.</p>
-      <div class="grid2">
-        <div><h5>What it's best at</h5><ul><li>Total transparency &amp; auditability</li><li>Finance/QA trust — every number traces</li><li>No AI cost, no API, works offline</li><li>The core the other two sit on</li></ul></div>
-        <div><h5>Trade-offs</h5><ul><li>No natural-language input (menus only)</li><li>Manual data curation</li></ul></div>
-      </div>
-      <div class="how"><b>How to demo it:</b> open the file, set the parameters, press Compute. Expand the "reference engine" panels to show the real Python is embedded. Drop in a JSON file to grow the knowledge base live.
-      <a class="btn green" href="method3_standalone.html" target="_blank" rel="noopener">Open Method 3 — Standalone engine ›</a></div>
-    </div>
-
   </div>
 
-  <h2 class="sec">Side by side</h2>
+  <h2>Side by side</h2>
   <table>
     <thead><tr><th>&nbsp;</th><th>Method 1 · Claude</th><th>Method 2 · Web app</th><th>Method 3 · Standalone</th></tr></thead>
     <tbody>
@@ -140,17 +96,15 @@
       <tr><td>Best as</td><td>Pilot + demo</td><td>Scaled product</td><td>Deterministic core</td></tr>
     </tbody>
   </table>
+  <p class="body" style="margin-top:10px;font-size:13.5px;color:var(--muted)">Methods 2 and 3 now live in <b>one web app</b> — the header switch turns the AI layer on (Method 2) or off (Method 3). Same engine either way.</p>
 
-  <h2 class="sec">The shared engine</h2>
-  <div class="engine">
-    <h3>Same math under all three</h3>
-    <p>Case-based reasoning, not ML. Comparables are scored on typology (40%), log-scaled GFA closeness (25%), modifier overlap (25%) and recency (10%); anything above a 0.35 similarity bar is blended by weight and scaled to size. Real firm reference data — 7 phases, discipline splits, 14 modifiers, the rate schedule — turns hours into a costed, multidisciplinary workplan. A draft starting point for the PM's judgment, never a final fee.</p>
-    <div class="flow"><span class="node">PM input</span><span class="arrow">→</span><span class="node hl">Comparables scoring (Python)</span><span class="arrow">→</span><span class="node">Phase × discipline × role blend</span><span class="arrow">→</span><span class="node">Modifiers + rates</span><span class="arrow">→</span><span class="node">Draft workplan</span></div>
-  </div>
+  <h2>How the number is built</h2>
+  <p class="body">Case-based reasoning, not ML. Comparables are scored on typology (40%), log-scaled GFA closeness (25%), modifier overlap (25%) and recency (10%); anything above a 0.35 similarity bar is blended by weight and scaled to size. Real firm reference data — phases, discipline splits, modifiers, the rate schedule — turns hours into a costed, multidisciplinary workplan. Fees build up from the roles: each line's rate is the blend of its roles and its fee is the sum of role hours × rate. A draft starting point for the PM's judgment, never a final fee.</p>
+  <div class="flow"><span class="node">PM input</span><span class="arrow">→</span><span class="node hl">Comparables scoring</span><span class="arrow">→</span><span class="node">Phase × discipline × role blend</span><span class="arrow">→</span><span class="node">Modifiers + rates</span><span class="arrow">→</span><span class="node">Draft workplan + resourcing</span></div>
 </div>
 
 <footer>
-  Demonstration build. Fees use an indicative AB rate schedule and a placeholder RAIC band; comparable projects are synthetic pending curation of the real Airtable set. The Python scoring and resourcing scripts are the source of truth — the web tools are a verified line-for-line JavaScript port producing identical numbers.
+  Demonstration build. Fees use an indicative AB rate schedule and a placeholder RAIC band; comparable projects are synthetic pending curation of the real set. The Python scoring and resourcing scripts are the source of truth — the app is a verified line-for-line JavaScript port producing identical numbers, and embeds that Python in the AI-off view.
 </footer>
 </body>
 </html>

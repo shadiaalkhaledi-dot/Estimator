@@ -102,8 +102,6 @@
   <p class="body">Case-based reasoning, not ML. Comparables are scored on typology (40%), log-scaled GFA closeness (25%), modifier overlap (25%) and recency (10%); anything above a 0.35 similarity bar is blended by weight and scaled to size. Real firm reference data — phases, discipline splits, modifiers, the rate schedule — turns hours into a costed, multidisciplinary workplan. Fees build up from the roles: each line's rate is the blend of its roles and its fee is the sum of role hours × rate. A draft starting point for the PM's judgment, never a final fee.</p>
   <div class="flow"><span class="node">PM input</span><span class="arrow">→</span><span class="node hl">Comparables scoring</span><span class="arrow">→</span><span class="node">Phase × discipline × role blend</span><span class="arrow">→</span><span class="node">Modifiers + rates</span><span class="arrow">→</span><span class="node">Draft workplan + resourcing</span></div>
 </div>
-<script data-goatcounter="https://salkhaledi.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
 <footer>
   Demonstration build. Fees use an indicative AB rate schedule and a placeholder RAIC band; comparable projects are synthetic pending curation of the real set. The Python scoring and resourcing scripts are the source of truth — the app is a verified line-for-line JavaScript port producing identical numbers, and embeds that Python in the AI-off view.
 </footer>
